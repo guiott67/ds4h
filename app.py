@@ -9,7 +9,7 @@ import geopandas as gpd
 
 APP_TITLE = 'Data Science For Humanities - Data Project'
 APP_SUB_TITLE = 'Causal Relationship Between Trust in Government, Population Vaccination, and Epidemic Evolution'
-APP_ABOUT = "# This is a header. This is an *extremely* cool app!\n and this is a test"
+APP_ABOUT = "This website is part of the Data Science for Humanities course at the University of Luxembourg. It aims to explore the causal relationship between trust in government, population vaccination, and epidemic evolution. The data used in this project is publicly available and comes from various sources. This project was realized by Réda Belcaid and Thierry Guiot."
 
 trust_metrics = {
     'TRUST_NG': 'Trust in National Government',
@@ -127,8 +127,6 @@ def main():
     st.title(APP_TITLE)
     st.caption(APP_SUB_TITLE)
     st.caption('Réda Belcaid & Thierry Guiot')
-    st.write('⚠️ This website is a work in progress. All content is still subject to change. ⚠️')
-    
 
     # Load datasets
     df_trust = pd.read_csv('trust_by_country.csv')
@@ -147,7 +145,9 @@ def main():
         covid_description = "*Percentage of population vaccinated* - year " + str(year)
         st.write(covid_description)
         st_folium(displayCovidMap(year, df_covid), width=800, height=600)
-    
+
+    st.title("Correlation")
+    st.write("Correlation matrix between trust metrics and vaccination rates (for the year 2021 only).")
     st.image('imgs/correlation_matrix.png', use_column_width=True)
     
 
